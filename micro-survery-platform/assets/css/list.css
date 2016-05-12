@@ -1,17 +1,88 @@
-.container{
+.container {
     width: 1040px;
     background: #fff;
     margin: 85px auto;
 }
-.survery-table{
-    width:100%;
+
+.survery-table {
+    width: 100%;
     border-spacing: 0 0;
     text-align: left;
 }
-.survery-table>thead{
+
+.survery-table>thead {
     background: #efefef;
-    font-size: 14px;
+    font-size: 16px;
 }
-.survery-table>thead th{
+
+.survery-table>thead th {
     font-weight: 400;
+    padding: 17px 14px;
+}
+
+.survery-table>tbody {
+    background: #fff;
+}
+
+.survery-table>tbody tr,
+.survery-table>tbody tr td {
+    border-bottom: 1px solid #cacaca;
+    cursor: pointer;
+}
+
+.survery-table>tbody>tr:hover {
+    background: #FFE0B8;
+}
+
+.survery-table td {
+    padding: 17px 14px;
+    font-size: 16px;
+}
+
+.container .btn-new-survery {
+    display: inline-block;
+    margin-left: 80px;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 3px;
+    background: #f17600;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.container .btn-new-survery:hover {
+    background: #FA5511;
+}
+
+.container .btn-new-survery .icon-add {
+    background: url('../images/list/add.svg') center left/ 14px auto no-repeat;
+    padding: 7px 9px;
+}
+
+.container .btn-operate {
+    display: inline-block;
+    width: 70px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    color: #595959;
+    font-size: 14px;
+    border: 1px solid #595959;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.container .btn-operate:hover {
+    color: #000;
+    border: 1px solid #000;
+}
+
+.container .tool-box {
+    padding: 17px 14px;
+}
+
+.container .btn-delete-select {
+    margin-left: 10px;
 }
