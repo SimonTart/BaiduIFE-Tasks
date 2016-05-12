@@ -1,0 +1,26 @@
+body{background: #efefef;}
+.header{
+    height: 45px;
+    background: #ed7419;
+    line-height: 45px;
+    padding-left: 80px;
+}
+.header .icon-question{
+    padding: 20px 16px;
+    background: url('../images/list/q.svg') center / 30px auto no-repeat;
+    vertical-align: middle;
+}
+.header .h-title{
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+    vertical-align: middle;
+}
+.header .my-survery{
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 80px;
+    vertical-align: sub;
+}

@@ -1,0 +1,17 @@
+.container{
+    width: 1040px;
+    background: #fff;
+    margin: 85px auto;
+}
+.survery-table{
+    width:100%;
+    border-spacing: 0 0;
+    text-align: left;
+}
+.survery-table>thead{
+    background: #efefef;
+    font-size: 14px;
+}
+.survery-table>thead th{
+    font-weight: 400;
+}
