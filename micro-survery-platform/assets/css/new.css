@@ -1,0 +1,30 @@
+body {
+    background: #efefef;
+}
+
+.container {
+    width: 1040px;
+    height: 325px;
+    background: #fff;
+    box-shadow: 0 3px 3px 0 #cacaca;
+    margin: 70px auto;
+    text-align: center;
+    line-height: 325px;
+}
+
+.container .btn-add {
+    background: #f17600;
+    padding: 10px 31px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    line-height: normal;
+}
+
+.container .btn-add .icon-add {
+    background: url('../images/list/add.svg') center left / 23px auto no-repeat;
+    padding: 10px 17px;
+}
