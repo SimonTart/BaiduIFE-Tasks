@@ -12,7 +12,7 @@
     opacity: 0;
 }
 
-.check-frame {
+.check-box .check-frame {
     width: 16px;
     height: 16px;
     display: inline-block;
@@ -21,7 +21,7 @@
     overflow: hidden;
 }
 
-.check-frame .normal-box {
+.check-box .check-frame .normal-box {
     position: absolute;
     left: 0;
     top: 0;
@@ -33,7 +33,7 @@
     box-sizing: border-box;
 }
 
-.check-frame .checked-box {
+.check-box .check-frame .checked-box {
     position: absolute;
     left: 0;
     top: 0;
@@ -54,4 +54,33 @@
 .check-box .checkbox-label {
     font-size: 16px;
     padding-left: 4px;
+}
+
+.radio-box {
+    cursor: pointer;
+}
+
+.radio-box .radio-frame {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: relative;
+    top: 2px;
+    display: inline-block;
+}
+
+.radio-box .radio-frame .normal-radio {
+    box-sizing: border-box;
+    width: inherit;
+    height: inherit;
+    border: 1px solid #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.radio-box .radio-label {
+    padding-left: 7px;
 }

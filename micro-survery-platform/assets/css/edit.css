@@ -1,0 +1,200 @@
+body {
+    background: #efefef;
+    line-height: 1.7;
+    color: #333;
+}
+
+.container {
+    width: 1040px;
+    margin: 70px auto;
+    background: #fff;
+    box-shadow: 0 2px 5px 1px #c7c7c7;
+    overflow: hidden;
+    padding: 0 30px;
+}
+
+.container .title {
+    border-bottom: 2px solid #ccc;
+}
+
+.container .title h3 {
+    margin: 35px auto;
+    text-align: center;
+    color: #333;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.question-list {
+    margin-top: 23px;
+    padding: 0 35px;
+}
+
+.question-list .question-item {
+    padding: 15px 25px;
+    border: 1px solid transparent;
+}
+
+.question-list .question-item:hover {
+    border-color: #ed7419;
+}
+
+.question-list .question-item:hover .q-title {
+    font-weight: 600;
+}
+
+.question-list {
+    font-size: 16px;
+}
+
+.question-item .q-number {
+    width: 40px;
+    display: inline-block;
+}
+
+.question-item .answer-list {
+    margin: 0;
+    padding: 0;
+    margin-left: 40px;
+    margin-top: 12px;
+    list-style: none;
+}
+
+.question-item .answer-list >li {
+    padding: 2px 0;
+}
+
+.check-box .check-frame {
+    width: 14px;
+    height: 14px;
+    top: 1px;
+}
+
+.check-box .checkbox-label {
+    padding-left: 8px;
+}
+
+.question-item .tool-bar {
+    text-align: right;
+    padding-right: 3px;
+    height: 27px;
+}
+
+.question-item .tool-bar>span {
+    margin-left: 20px;
+    cursor: pointer;
+    color: #555553;
+    font-size: 16px;
+    display: none;
+}
+
+.question-item:hover .tool-bar>span {
+    display: inline;
+}
+
+.question-item .tool-bar>span:hover {
+    color: #000;
+}
+
+.question-item .textarea {
+    height: 100px;
+    width: 540px;
+    border: 1px solid #cacaca;
+    margin-left: 40px;
+    margin-top: 12px;
+    margin-bottom: 7px;
+}
+
+.add-box {
+    border: 1px solid #cacaca;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.add-box .question-type {
+    padding: 15px 0;
+}
+
+.add-box .btn-qtype {
+    padding: 5px 18px;
+    background: #efefef;
+    font-size: 14px;
+    color: #000;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.add-box .btn-qtype .icon-qtype {
+    padding: 10px 10px;
+}
+
+.add-box .btn-qtype .icon-qtype.icon-circle {
+    background: url('../images/new/circle.svg') center left /24px auto no-repeat;
+    padding: 6px 12px;
+}
+
+.add-box .btn-qtype .icon-qtype.icon-right {
+    background: url('../images/new/right.svg') center left / 16px auto no-repeat;
+    padding: 10px 11px;
+}
+
+.add-box .btn-qtype .icon-qtype.icon-text {
+    background: url('../images/new/text.svg') center left / 16px auto no-repeat;
+    padding: 10px 11px;
+}
+
+.add-box .question-add {
+    height: 83px;
+    line-height: 83px;
+    background: #efefef;
+    text-align: center;
+    font-size: 18px;
+}
+
+.add-box .question-add .btn-qadd {
+    cursor: pointer;
+}
+
+.add-box .question-add .icon-qadd {
+    padding: 12px 18px;
+    background: url('../images/new/add.svg') left center / 18px auto no-repeat;
+}
+
+.survery-box {
+    margin-top: 27px;
+    border-top: 2px solid #ccc;
+    padding: 30px 80px;
+    font-size: 16px;
+    color: #565656;
+}
+
+.survery-box .dl-date {
+    border: 1px solid #cacaca;
+    width: 220px;
+    padding: 5px 7px 3px 12px;
+    display: inline-block;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.survery-box .survery-operate {
+    font-size: 14px;
+    padding: 4px 13px;
+    border: 1px solid #a1a1a1;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.survery-box .survery-operate:hover {
+    border-color: #000;
+    color: #000;
+}
+
+.survery-box .su-save {
+    margin-left: 172px;
+}
+
+.survery-box .su-publish {
+    margin-left: 25px;
+}
