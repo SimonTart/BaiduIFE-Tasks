@@ -1,4 +1,97 @@
-body{
+body {
     margin: 0;
-    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei",STHeiti,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", STHeiti, sans-serif;
+}
+
+.tip-mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tip-mask .tip-box {
+    min-width: 350px;
+    max-width: 450px;
+    background: #fff;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+}
+
+.tip-mask .tip-box .tip-header {
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    color: #000;
+    background: #f7f7f7;
+    font-weight: 600;
+    padding-left: 25px;
+    padding-right: 18px;
+    overflow: hidden;
+}
+
+.tip-mask .tip-box .tip-header .icon-cancel {
+    cursor: pointer;
+    margin-top: 8px;
+    padding: 12px 10px;
+    background: url('../images/new/cancel.svg') left center / 20px auto no-repeat;
+    float: right;
+    -webkit-transition: transform 0.5s ease;
+    -moz-transition: transform 0.5s ease;
+    transition: transform 0.5s ease;
+    backface-visibility: hidden;
+}
+
+.tip-mask .tip-box .tip-header .icon-cancel:hover {
+    transform: rotateZ(180deg);
+}
+
+.tip-mask .tip-box .tip-body {
+    padding: 8px 25px;
+    font-size: 15px;
+    color: #636363;
+}
+
+.tip-mask .tip-box .tip-body p {
+    margin: 7px;
+}
+
+.tip-mask .tip-box .tip-btns {
+    text-align: center;
+}
+
+.tip-mask .tip-box .tip-btns .btn-option {
+    display: inline-block;
+    font-size: 14px;
+    padding: 3px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.tip-mask .tip-box .tip-btns .btn-confirm {
+    margin-right: 9px;
+    background: #f17600;
+    color: #fff;
+}
+
+.tip-mask .tip-box .tip-btns .btn-confirm:hover {
+    background-color: #FF5722;
+}
+
+.tip-mask .tip-box .tip-btns .btn-cancel {
+    margin-right: 9px;
+    border-color: #a5a5a5;
+    color: #636363;
+}
+
+.tip-mask .tip-box .tip-btns .btn-cancel:hover {
+    color: #333;
+    background: #efefef;
 }
