@@ -33,7 +33,9 @@ body {
     border-bottom: 1px solid #cacaca;
     cursor: pointer;
 }
-
+.survery-table>tbody>tr>td:nth-child(3),.survery-table>tbody>tr>td:nth-child(4){
+    font-size: 14px;
+}
 .survery-table>tbody>tr:hover {
     background: #FFE0B8;
 }

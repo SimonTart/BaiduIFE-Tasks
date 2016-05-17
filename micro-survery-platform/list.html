@@ -17,7 +17,7 @@
         <a class="my-survery" href="#my">我的问卷</a>
     </div>
     <div class="container">
-        <table class="survery-table">
+        <table class="survery-table" id="survery-table">
             <thead>
                 <tr>
                     <th>选择</th>
@@ -34,51 +34,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <label for="checkbox1" class="check-box">
-							<input type="checkbox" name="test" id="checkbox1"/>
-							<span class="check-frame">
-								<span class="normal-box"></span>
-								<span class="checked-box"></span>
-							</span>
-							<span></span>
-						</label>
-                    </td>
-                    <td>这是问卷调查的笔记</td>
-                    <td>这是问卷调查的时间</td>
-                    <td>正在进行中</td>
-                    <td>
-                        <div class="btn-operate">编辑</div>
-                        <div class="btn-operate">删除</div>
-                        <div class="btn-operate">查看数据</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="checkbox1" class="check-box">
-							<input type="checkbox" name="test" id="checkbox1"/>
-							<span class="check-frame">
-								<span class="normal-box"></span>
-								<span class="checked-box"></span>
-							</span>
-							<span></span>
-						</label>
-                    </td>
-                    <td>这是问卷调查的笔记</td>
-                    <td>这是问卷调查的时间</td>
-                    <td>正在进行中</td>
-                    <td>
-                        <div class="btn-operate">编辑</div>
-                        <div class="btn-operate">删除</div>
-                        <div class="btn-operate">查看数据</div>
-                    </td>
-                </tr>
+
             </tbody>
         </table>
         <div class="tool-box">
-            <label for="checkbox1" class="check-box">
-				<input type="checkbox" name="test" id="checkbox1"/>
+            <label class="check-box">
+				<input type="checkbox" name="test"/>
 				<span class="check-frame">
 					<span class="normal-box"></span>
 					<span class="checked-box"></span>
@@ -88,7 +49,9 @@
             <div class="btn-operate btn-delete-select">删除</div>
         </div>
     </div>
-
+    <script type="text/javascript" src="../assets/js/check-box.js"></script>
+    <script type="text/javascript" src="../assets/js/survery.js"></script>
+    <script type="text/javascript" src="../assets/js/list.js" /></script>
 </body>
 
 </html>
