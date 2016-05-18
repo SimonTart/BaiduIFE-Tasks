@@ -26,10 +26,10 @@
                     <th>状态</th>
                     <th>
                         <span>操作</span>
-                        <div class="btn-new-survery">
+                        <a href="./new.html" class="btn-new-survery">
                             <i class="icon-add"></i>
                             <span>新建问卷</span>
-                        </div>
+                        </a>
                     </th>
                 </tr>
             </thead>
@@ -38,17 +38,33 @@
             </tbody>
         </table>
         <div class="tool-box">
-            <label class="check-box">
-				<input type="checkbox" name="test"/>
+            <label class="check-box" data-type="self-checkbox" id="select-all">
+				<input type="checkbox"/>
 				<span class="check-frame">
 					<span class="normal-box"></span>
 					<span class="checked-box"></span>
 				</span>
 				<span class="checkbox-label">全选</span>
 			</label>
-            <div class="btn-operate btn-delete-select">删除</div>
+            <div class="btn-operate btn-delete-select" id="delete-selected-btn">删除</div>
         </div>
     </div>
+    <div class="tip-mask" id="tipMask">
+        <div class="tip-box">
+            <div class="tip-header">
+                <span>提示</span>
+                <span class="icon-cancel"></span>
+            </div>
+            <div class="tip-body tip-message">
+
+            </div>
+            <div class="tip-btns">
+                <div class="btn-option btn-confirm">确认</div>
+                <div class="btn-option btn-cancel">取消</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../assets/js/utils.js"></script>
     <script type="text/javascript" src="../assets/js/check-box.js"></script>
     <script type="text/javascript" src="../assets/js/survery.js"></script>
     <script type="text/javascript" src="../assets/js/list.js" /></script>

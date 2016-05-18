@@ -1,29 +1,37 @@
-(function (document) {
-    var selfCheckBoxNodes = document.querySelectorAll('label[data-typ=self-checkbox]');
+(function (document, window) {
+    var changeCB;
+    refresh();
 
-    for (var i = 0; i < selfCheckBoxNodes.length; i++) {
-        selfCheckBoxNodes.addEventListener('click',function(e) {
-            
-        });
+    function checkboxClickHandler(e) {
+        var selfCheckbox = this.parentElement;
+        var isChecked = this.checked;
+        selfCheckbox.classList.toggle('checked');
+        if (changeCB) {
+            changeCB.call(this, e);
+        }
     }
 
+    function refresh() {
+        var selfCheckBoxInputNodes = document.querySelectorAll('label[data-type=self-checkbox] input[type=checkbox]') || [];
+        removeNodesEvent(selfCheckBoxInputNodes, 'change', checkboxClickHandler);
+        bindNodesEvent(selfCheckBoxInputNodes, 'change', checkboxClickHandler);
+    }
 
-    document.body.addEventListener('click', function (e) {
-        var target = e.target;
-        if (target.getAttribute('data-type') !== 'self-checkbox') {
-            return;
+    function bindNodesEvent(nodes, event, callback) {
+        for (var index = 0; index < nodes.length; index++) {
+            nodes[index].addEventListener(event, callback);
         }
-        var inputNode = target.querySelector('input[type=checbox]');
-        var classNamesArr = target.className.split(' ');
-        var activeIndex = classNamesArr.indexOf('active');
-        if (inputNode.checked) {
-            inputNode.checked = false;
-            if (activeIndex !== -1) {
-                classNamesArr.splice(activeIndex);
-                target.className = classNamesArr.join(' ');
-            }
-        } else {
+    }
 
+    function removeNodesEvent(nodes, event, callback) {
+        for (var index = 0; index < nodes.length; index++) {
+            nodes[index].removeEventListener(event, callback);
         }
-    });
-})(document);
+    }
+    window.SelfCheckBox = {
+        refresh: refresh,
+        onChange: function (callback) {
+            changeCB = callback;
+        }
+    };
+})(document, window);

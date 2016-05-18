@@ -2,7 +2,9 @@ body {
     margin: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", STHeiti, sans-serif;
 }
-
+a{
+    text-decoration: none;
+}
 .tip-mask {
     position: fixed;
     left: 0;
@@ -30,7 +32,7 @@ body {
     display: inline-block;
     text-align: left;
     transform: scale(0.1,0.1);
-    transition: transform 0.1s linear;
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.21, 0.99);
 }
 
 .tip-mask .tip-box .tip-header {
@@ -44,6 +46,7 @@ body {
     padding-right: 18px;
     overflow: hidden;
 }
+
 
 .tip-mask .tip-box .tip-header .icon-cancel {
     cursor: pointer;
@@ -62,7 +65,7 @@ body {
 }
 
 .tip-mask .tip-box .tip-body {
-    padding: 8px 25px;
+    padding: 23px 25px;
     font-size: 15px;
     color: #636363;
 }
@@ -73,6 +76,7 @@ body {
 
 .tip-mask .tip-box .tip-btns {
     text-align: center;
+    padding-bottom: 18px;
 }
 
 .tip-mask .tip-box .tip-btns .btn-option {
@@ -92,6 +96,10 @@ body {
 
 .tip-mask .tip-box .tip-btns .btn-confirm:hover {
     background-color: #FF5722;
+}
+
+.tip-mask[data-type=message] .tip-box .tip-btns .btn-cancel{
+    display: none;
 }
 
 .tip-mask .tip-box .tip-btns .btn-cancel {

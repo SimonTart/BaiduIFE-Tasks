@@ -1,7 +1,7 @@
 .check-box {
     cursor: pointer;
+    display: inline-block;
 }
-
 .check-box input[type=checkbox] {
     height: 0;
     width: 0;
@@ -10,6 +10,8 @@
     border: none;
     outline: none;
     opacity: 0;
+    margin-right: -18px;
+    display: none;
 }
 
 .check-box .check-frame {
@@ -33,6 +35,9 @@
     box-sizing: border-box;
 }
 
+.check-box.checked  .checked-box{
+    opacity: 1;
+}
 .check-box .check-frame .checked-box {
     position: absolute;
     left: 0;

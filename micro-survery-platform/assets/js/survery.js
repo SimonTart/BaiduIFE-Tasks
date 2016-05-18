@@ -1,18 +1,55 @@
 (function (window) {
+    function Survery(params) {
 
-    function newSurvery() {
-        var surveries = getSurveryList();
-        var newSurvery = {
-            id: generateId(),
-            title: '调查问卷标题',
-            questions: [],
-            answers: [],
-            createDate: getFormatedDate(),
-            state: 0 //0: 未发布 1：正在进行 2：已结束
-        };
-        surveries.push(newSurvery);
-        setSurverise(surveries);
-        return newSurvery;
+    }
+    Survery.prototype = {
+        newSurvery: function () {
+            var surveries = this.getSurveryList();
+            var newSurvery = {
+                id: generateId(),
+                title: '调查问卷标题',
+                questions: [],
+                answers: [],
+                createDate: getFormatedDate(),
+                state: 0 //0: 未发布 1：正在进行 2：已结束
+            };
+            surveries.unshift(newSurvery);
+            this.setSurverise(surveries);
+            return newSurvery;
+        },
+        getSurveryList: function () {
+            var surveries = [];
+            var surveriesItem = window.localStorage.getItem('surveries');
+            if (surveries) {
+                try {
+                    surveries = JSON.parse(surveriesItem);
+                } catch (e) {
+                    console.error('JSON parse surveries fail');
+                    console.error(e);
+                }
+            }
+            return surveries || [];
+        },
+        setSurverise: function (surveries) {
+            var surveriesItem = JSON.stringify(surveries);
+            window.localStorage.setItem('surveries', surveriesItem);
+        },
+        remove: function (id) {
+            var surveries = this.getSurveryList();
+            surveries = surveries.filter(function (element) {
+                return element.id !== id;
+            });
+            this.setSurverise(surveries);
+            return true;
+        },
+        removeByArray: function (ids) {
+            var surveries = this.getSurveryList();
+            surveries = surveries.filter(function (element) {
+                return ids.indexOf(element.id) === -1;
+            });
+            this.setSurverise(surveries);
+            return true;
+        }
     }
 
     function generateId() {
@@ -21,25 +58,6 @@
 
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-
-    function getSurveryList() {
-        var surveries = [];
-        var surveriesItem = window.localStorage.getItem('surveries');
-        if (surveries) {
-            try {
-                surveries = JSON.parse(surveriesItem);
-            } catch (e) {
-                console.error('JSON parse surveries fail');
-                console.error(e);
-            }
-        }
-        return surveries || [];
-    }
-
-    function setSurverise(surveries) {
-        var surveriesItem = JSON.stringify(surveries);
-        window.localStorage.setItem('surveries', surveriesItem);
     }
 
     function getFormatedDate() {
@@ -59,8 +77,6 @@
             hour + ':' + minute + ':' + second;
     }
 
-    window.Survery = {
-        newSurvery: newSurvery,
-        getSurveryList: getSurveryList
-    }
+
+    window.Survery = new Survery();
 })(window);

@@ -88,8 +88,10 @@ body {
 
 .container .tool-box {
     padding: 17px 14px;
+    height: 22px;
 }
 
 .container .btn-delete-select {
     margin-left: 10px;
+    display: none;
 }
