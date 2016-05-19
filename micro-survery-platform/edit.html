@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>调查问卷调查</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/header.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/checkbox.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/edit.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/checkbox.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/edit.css" />
 </head>
 
 <body>
@@ -17,9 +17,10 @@
         <a class="my-survery" href="#my">我的问卷</a>
     </div>
     <div class="container">
-        <div class="title">
+        <div class="title" id="title">
             <h3>
-                这里是标题
+                <span id="survery-title">这里是标题</span>
+                <input id="survery-title-input" class="title-edit" type="text" value="这里是标题">
             </h3>
         </div>
         <div class="question-list">
@@ -31,7 +32,7 @@
                     <li>
                         <div class="check-box">
                             <span class="check-frame">
-								<span class="normal-box"></span>
+                                <span class="normal-box"></span>
                             </span>
                             <span class="checkbox-label">答案一</span>
                         </div>
@@ -39,7 +40,7 @@
                     <li>
                         <div class="check-box">
                             <span class="check-frame">
-								<span class="normal-box"></span>
+                                <span class="normal-box"></span>
                             </span>
                             <span class="checkbox-label">答案一</span>
                         </div>
@@ -47,7 +48,7 @@
                     <li>
                         <div class="check-box">
                             <span class="check-frame">
-								<span class="normal-box"></span>
+                                <span class="normal-box"></span>
                             </span>
                             <span class="checkbox-label">答案一</span>
                         </div>
@@ -65,7 +66,7 @@
                     <li>
                         <div class="radio-box">
                             <span class="radio-frame">
-								<span class="normal-radio"></span>
+                                <span class="normal-radio"></span>
                             </span>
                             <span class="radio-label">答案一</span>
                         </div>
@@ -73,7 +74,7 @@
                     <li>
                         <div class="radio-box">
                             <span class="radio-frame">
-								<span class="normal-radio"></span>
+                                <span class="normal-radio"></span>
                             </span>
                             <span class="radio-label">答案一</span>
                         </div>
@@ -81,7 +82,7 @@
                     <li>
                         <div class="radio-box">
                             <span class="radio-frame">
-								<span class="normal-radio"></span>
+                                <span class="normal-radio"></span>
                             </span>
                             <span class="radio-label">答案一</span>
                         </div>
@@ -102,7 +103,7 @@
             </div>
         </div>
         <div class="add-box">
-            <div class="question-type">
+            <div class="question-type" id="question-types">
                 <div class="btn-qtype">
                     <i class="icon-qtype icon-circle"></i>
                     <span>单选题</span>
@@ -116,7 +117,7 @@
                     <span>文本题</span>
                 </div>
             </div>
-            <div class="question-add">
+            <div class="question-add" id="add-question">
                 <span class="btn-qadd">
                     <i class="icon-qadd"></i>
                     <span>添加问题</span>
@@ -132,6 +133,51 @@
             </div>
         </div>
     </div>
+    <div class="new-qmask" data-type="single" id="new-question-box">
+        <div class="new-qbox">
+            <div class="new-qheader">
+                <span>新建 -</span>
+                <span class="single-title">单择题</span>
+                <span class="multiple-title">多选题</span>
+                <span class="text-title">文本题</span>
+                <span class="icon-cancel"></span>
+            </div>
+            <div class="new-qbody">
+                <div class="new-qtitle">
+                    <span>题目：</span>
+                    <textarea name="" class="title-input"></textarea>
+                </div>
+                <ul class="selections-list">
+
+                </ul>
+                <div class="new-selection-btn">
+                    <i class="icon-add"></i>
+                    <span>添加选项</span>
+                </div>
+            </div>
+            <div class="new-qbtns">
+                <div class="btn-option btn-confirm">确认</div>
+                <div class="btn-option btn-cancel">取消</div>
+            </div>
+        </div>
+    </div>
+    <div class="tip-mask" id="tipMask">
+        <div class="tip-box">
+            <div class="tip-header">
+                <span>提示</span>
+                <span class="icon-cancel"></span>
+            </div>
+            <div class="tip-body tip-message">
+            </div>
+            <div class="tip-btns">
+                <div class="btn-option btn-confirm">确认</div>
+                <div class="btn-option btn-cancel">取消</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/js/tipBox.js"></script>
+    <script type="text/javascript" src="assets/js/survery.js"></script>
+    <script type="text/javascript" src="assets/js/edit.js"></script>
 </body>
 
 </html>

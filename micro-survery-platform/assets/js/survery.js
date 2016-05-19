@@ -1,9 +1,9 @@
-(function (window) {
+(function(window) {
     function Survery(params) {
 
     }
     Survery.prototype = {
-        newSurvery: function () {
+        newSurvery: function() {
             var surveries = this.getSurveryList();
             var newSurvery = {
                 id: generateId(),
@@ -17,7 +17,7 @@
             this.setSurverise(surveries);
             return newSurvery;
         },
-        getSurveryList: function () {
+        getSurveryList: function() {
             var surveries = [];
             var surveriesItem = window.localStorage.getItem('surveries');
             if (surveries) {
@@ -30,25 +30,48 @@
             }
             return surveries || [];
         },
-        setSurverise: function (surveries) {
+        setSurverise: function(surveries) {
             var surveriesItem = JSON.stringify(surveries);
             window.localStorage.setItem('surveries', surveriesItem);
         },
-        remove: function (id) {
+        remove: function(id) {
             var surveries = this.getSurveryList();
-            surveries = surveries.filter(function (element) {
+            surveries = surveries.filter(function(element) {
                 return element.id !== id;
             });
             this.setSurverise(surveries);
             return true;
         },
-        removeByArray: function (ids) {
+        removeByArray: function(ids) {
             var surveries = this.getSurveryList();
-            surveries = surveries.filter(function (element) {
+            surveries = surveries.filter(function(element) {
                 return ids.indexOf(element.id) === -1;
             });
             this.setSurverise(surveries);
             return true;
+        },
+        get: function(id) {
+            var surveries = this.getSurveryList();
+            for (var i = 0; i < surveries.length; i++) {
+                if (surveries[i].id === id) {
+                    return surveries[i];
+                }
+            }
+            return null;
+        },
+        set: function(id, prop, value) {
+            if (!id || !prop || !value) {
+                throw 'surveries must have property id  prop value';
+                return false;
+            }
+            var surveries = this.getSurveryList();
+            for (var i = 0; i < surveries.length; i++) {
+                if (surveries[i].id === id) {
+                    surveries[i][prop] = value;
+                    this.setSurverise(surveries);
+                    break;
+                }
+            }
         }
     }
 

@@ -25,6 +25,27 @@ body {
     font-weight: 500;
 }
 
+.container .title.edit span {
+    display: none;
+}
+
+.container .title.edit .title-edit {
+    display: inline-block;
+}
+
+.container .title-edit {
+    outline: none;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid #000;
+    padding: 3px 7px;
+    text-align: center;
+    color: #000;
+    font-size: 22px;
+    width: 100%;
+    display: none;
+}
+
 .question-list {
     margin-top: 23px;
     padding: 0 35px;
@@ -112,10 +133,17 @@ body {
 }
 
 .add-box .question-type {
-    padding: 15px 0;
+    height: 0px;
+    overflow: hidden;
+    transition: all .45s cubic-bezier(1, -0.6, 0, 1.61);
+}
+
+.add-box .question-type.adding {
+    height: 65px;
 }
 
 .add-box .btn-qtype {
+    margin: 15px 0;
     padding: 5px 18px;
     background: #efefef;
     font-size: 14px;
@@ -123,6 +151,12 @@ body {
     display: inline-block;
     cursor: pointer;
     margin-left: 25px;
+    border: 1px solid transparent;
+}
+
+.add-box .btn-qtype:hover {
+    border: 1px solid #f39f3c;
+    color: #f39f3c;
 }
 
 .add-box .btn-qtype .icon-qtype {
@@ -197,4 +231,210 @@ body {
 
 .survery-box .su-publish {
     margin-left: 25px;
+}
+
+.new-qmask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-qmask .new-qbox {
+    background: #fff;
+    min-width: 650px;
+    max-width: 1040px;
+    margin: 0 15px;
+}
+
+.new-qmask .new-qbox .new-qheader {
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    color: #000;
+    background: #f7f7f7;
+    font-weight: 600;
+    padding-left: 25px;
+    padding-right: 18px;
+    overflow: hidden;
+}
+
+.single-title,
+.multiple-title,
+.text-title {
+    display: none;
+}
+
+.new-qmask[data-type=single] .single-title {
+    display: inline;
+}
+
+.new-qmask[data-type=multiple] .multiple-title {
+    display: inline;
+}
+
+.new-qmask[data-type=text] .text-title {
+    display: inline;
+}
+
+.new-qmask .new-qbox .new-qheader .icon-cancel {
+    cursor: pointer;
+    margin-top: 8px;
+    padding: 12px 10px;
+    background: url('../images/new/cancel.svg') left center / 20px auto no-repeat;
+    float: right;
+    -webkit-transition: transform 0.5s ease;
+    -moz-transition: transform 0.5s ease;
+    transition: transform 0.5s ease;
+    backface-visibility: hidden;
+}
+
+.new-qmask .new-qbox .new-qheader .icon-cancel:hover {
+    transform: rotateZ(180deg);
+}
+
+.new-qmask .new-qbox .new-qbody {
+    font-size: 16px;
+    padding: 35px 25px;
+}
+
+.new-qmask .new-qbox .title-input {
+    outline: none;
+    border: 1px solid #e0e0e0;
+    resize: none;
+    width: calc(100% - 70px);
+    vertical-align: text-top;
+    height: 45px;
+    font-size: 16px;
+    word-break: break-all;
+    padding: 7px 13px;
+    box-sizing: border-box;
+}
+
+.new-qmask .new-qbox .title-input:focus {
+    border: 1px solid #0095dd;
+}
+
+.new-qmask .line-input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: text-top;
+    font-size: 14px;
+}
+
+.new-qmask .radio-box .radio-frame {
+    width: 14px;
+    height: 14px;
+}
+
+.new-qmask .line-input:focus {
+    border-bottom: 1px solid #0095dd;
+}
+
+.new-qmask .selections-list .line-input {
+    padding: 3px 4px;
+    width: 155px;
+    margin-left: 5px;
+}
+
+.new-qmask .selections-list {
+    margin: 0;
+    padding: 0;
+    margin-top: 25px;
+    list-style: none;
+    font-size: 16px;
+    padding: 0 15px;
+    overflow: hidden;
+}
+
+.new-qmask .selections-list>li {
+    margin-bottom: 20px;
+    float: left;
+    margin-right: 35px;
+}
+
+.new-qmask .selections-list .operates {
+    display: inline-block;
+}
+
+.new-qmask .selections-list .icon-up {
+    cursor: pointer;
+    padding: 5px 10px;
+    background: url('../images/edit/up.svg') no-repeat left center / 22px auto;
+    margin-right: 7px;
+    margin-left: 5px;
+}
+
+.new-qmask .selections-list .icon-down {
+    cursor: pointer;
+    padding: 5px 10px;
+    background: url('../images/edit/down.svg') no-repeat left center / 22px auto;
+    margin-right: 7px;
+}
+
+.new-qmask .selections-list .icon-delete {
+    cursor: pointer;
+    padding: 5px 10px;
+    background: url('../images/edit/delete.svg') no-repeat left center / 20px auto;
+}
+
+.new-qmask .new-selection-btn {
+    font-size: 14px;
+    cursor: pointer;
+    padding-left: 17px;
+    display: inline-block;
+}
+
+.new-qmask .new-selection-btn:hover {
+    color: #0095dd;
+}
+
+.new-qmask .new-selection-btn .icon-add {
+    padding: 5px 10px;
+    background: url('../images/new/add.svg') no-repeat left center/14px auto;
+}
+
+.new-qmask .new-qbox .new-qbtns {
+    text-align: center;
+    padding-bottom: 18px;
+}
+
+.new-qmask .new-qbox .new-qbtns .btn-option {
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.new-qmask .new-qbox .new-qbtns .btn-confirm {
+    margin-right: 75px;
+    background: #f17600;
+    color: #fff;
+}
+
+.new-qmask .new-qbox .new-qbtns .btn-confirm:hover {
+    background-color: #FF5722;
+}
+
+.tip-mask[data-type=message] .new-qbox .new-qbtns .btn-cancel {
+    display: none;
+}
+
+.new-qmask .new-qbox .new-qbtns .btn-cancel {
+    margin-right: 9px;
+    border-color: #a5a5a5;
+    color: #636363;
+}
+
+.new-qmask .new-qbox .new-qbtns .btn-cancel:hover {
+    color: #333;
+    background: #efefef;
 }
