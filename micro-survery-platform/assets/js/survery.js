@@ -7,7 +7,7 @@
             var surveries = this.getSurveryList();
             var newSurvery = {
                 id: generateId(),
-                title: '调查问卷标题',
+                title: '点击标题修改',
                 questions: [],
                 answers: [],
                 createDate: getFormatedDate(),
