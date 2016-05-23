@@ -3,9 +3,9 @@
         .addEventListener('click', function(e) {
             var newSurvery = Survery.newSurvery();
             var tipBox = document.querySelector('#tipBox');
-            utils.addClass(tipBox,'active');
+            tipBox.classList.add('active');
             setTimeout(function() {
-              window.location.href = "./edit.html?surveryId="+newSurvery.id;
+              window.location.href = "./edit.html?id="+newSurvery.id;
             },1000);
         });
 })(window.Survery, document);
