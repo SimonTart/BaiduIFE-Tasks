@@ -169,6 +169,10 @@
         window.location.href = "./404.html";
         return;
     }
+    if (survery.state !== 0) {
+        window.location.href = "./404.html";
+        return;
+    }
     var questions = survery.questions || [];
     // init page
     initSurvery(survery);
@@ -219,7 +223,15 @@
     //save survery
     document.querySelector('#save-survery').addEventListener('click', function() {
         Survery.set(survery.id, 'questions', questions);
+        TipBox.alertMessage('保存成功');
     });
+    //publish survery
+    document.querySelector('#publish-survery').addEventListener('click', function() {
+        Survery.set(survery.id, 'state', 1);
+        TipBox.alertMessage('发布成功');
+        window.location.href = "list.html";
+    });
+
     //after new question
     newQuestionBox.afterNew(function(newQuestion) {
         var questionListNode = document.querySelector('#question-list');
@@ -349,33 +361,21 @@
             questions[index] = questions[index + 1];
             questions[index + 1] = tempQuestion;
         });
-        questionNode.querySelector('.move-down').addEventListener('click', function() {
-            var questionListNode = document.querySelector('#question-list');
-            var questionNodes = questionListNode.querySelectorAll('div.question-item');
-            var thisQuestionNode = this.parentNode.parentNode;
-            var index = [].indexOf.call(questionNodes, thisQuestionNode);
-            if (index >= questionNodes.length - 1) {
-                return;
-            }
-            // var smallQuestionNode = renderQuestion(questions[index + 1], index);
-            // var largeQuestionNode = renderQuestion(questions[index], index + 1);
-
-            // questionListNode.insertBefore(smallQuestionNode, questionNodes[index]);
-            // questionListNode.removeChild(questionNodes[index]);
-            // questionListNode.insertBefore(largeQuestionNode, questionNodes[index + 1]);
-            // questionListNode.removeChild(questionNodes[index + 1]);
-
-            var tempQuestion = questions[index];
-            questions[index] = questions[index + 1];
-            questions[index + 1] = tempQuestion;
-        });
 
         questionNode.querySelector('.delete').addEventListener('click', function() {
             var questionListNode = document.querySelector('#question-list');
             var questionNodes = questionListNode.querySelectorAll('div.question-item');
             var thisQuestionNode = this.parentNode.parentNode;
-            var index = [].indexOf.call(questionNodes, thisQuestionNode);
+            var deleteIndex = [].indexOf.call(questionNodes, thisQuestionNode);
+            questionListNode.removeChild(thisQuestionNode);
 
+            [].forEach.call(questionNodes, function(questionNode, index) {
+                if (index > deleteIndex) {
+                    questionNode.querySelector('.q-number').textContent = index;
+                }
+            });
+
+            questions.splice(deleteIndex, 1);
         });
 
     }

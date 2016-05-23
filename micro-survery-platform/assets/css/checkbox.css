@@ -14,7 +14,9 @@
     margin-right: -18px;
     display: none;
 }
-
+.check-box input[type=checkbox]:checked ~ .check-frame .checked-box{
+  opacity:1;
+}
 .check-box .check-frame {
     width: 16px;
     height: 16px;
