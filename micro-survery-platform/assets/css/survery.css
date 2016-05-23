@@ -1,0 +1,101 @@
+body {
+    background: #efefef;
+    line-height: 1.7;
+    color: #333;
+}
+
+.container {
+    width: 1040px;
+    margin: 70px auto;
+    background: #fff;
+    box-shadow: 0 2px 5px 1px #c7c7c7;
+    overflow: hidden;
+    padding: 0 30px;
+}
+
+.container .title {
+    border-bottom: 2px solid #ccc;
+}
+
+.container .title h3 {
+    margin: 35px auto;
+    text-align: center;
+    color: #333;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.container .title.edit span {
+    display: none;
+}
+
+.container .title.edit .title-edit {
+    display: inline-block;
+}
+
+.container .title-edit {
+    outline: none;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid #000;
+    padding: 3px 7px;
+    text-align: center;
+    color: #000;
+    font-size: 22px;
+    width: 100%;
+    display: none;
+}
+
+.question-list {
+    margin-top: 23px;
+    padding: 0 35px;
+}
+
+.question-list .question-item {
+    padding: 15px 25px;
+}
+
+.question-list {
+    font-size: 16px;
+}
+
+.question-item .q-number {
+    width: 40px;
+    display: inline-block;
+}
+
+.question-item .answer-list {
+    margin: 0;
+    padding: 0;
+    margin-left: 40px;
+    margin-top: 12px;
+    list-style: none;
+}
+
+.question-item .answer-list >li {
+    padding: 2px 0;
+}
+
+.check-box .check-frame {
+    width: 14px;
+    height: 14px;
+    top: 1px;
+}
+
+.check-box .checkbox-label {
+    padding-left: 8px;
+}
+
+.selections-list .check-box .line-input {
+    vertical-align: top;
+}
+
+
+.question-item .textarea {
+    height: 100px;
+    width: 540px;
+    border: 1px solid #cacaca;
+    margin-left: 40px;
+    margin-top: 12px;
+    margin-bottom: 7px;
+}

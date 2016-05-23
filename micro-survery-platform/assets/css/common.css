@@ -5,6 +5,9 @@ body {
 a{
     text-decoration: none;
 }
+input{
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", STHeiti, sans-serif;
+}
 .tip-mask {
     position: fixed;
     left: 0;

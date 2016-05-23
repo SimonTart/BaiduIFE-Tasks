@@ -84,19 +84,6 @@ body {
     padding: 2px 0;
 }
 
-.check-box .check-frame {
-    width: 14px;
-    height: 14px;
-    top: 1px;
-}
-
-.check-box .checkbox-label {
-    padding-left: 8px;
-}
-
-.selections-list .check-box .line-input {
-    vertical-align: top;
-}
 
 .question-item .tool-bar {
     text-align: right;
@@ -340,7 +327,6 @@ body {
     outline: none;
     border: none;
     border-bottom: 1px solid #e0e0e0;
-    vertical-align: text-top;
     font-size: 14px;
 }
 

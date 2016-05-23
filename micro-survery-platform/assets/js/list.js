@@ -12,13 +12,12 @@
         var surverySatate = '未发布';
 
         var surveryItemString = '    <td>' +
-            '        <label class="check-box"  data-type="self-checkbox">' +
+            '        <label  data-type="input-checkbox">' +
             '            <input type="checkbox"/>' +
-            '            <span class="check-frame">' +
-            '                                <span class="normal-box"></span>' +
-            '            <span class="checked-box"></span>' +
+            '            <span class="input-frame">' +
+            '               <span class="normal-box"></span>' +
+            '               <span class="checked-box"></span>' +
             '            </span>' +
-            '            <span></span>' +
             '        </label>' +
             '    </td>' +
             '    <td>' +
@@ -69,19 +68,23 @@
                 IsShowDeleteSelectedBtn();
             });
         });
+        //change is show delete btn
+        surveryNode.querySelector('[data-type=input-checkbox]').addEventListener('change',function () {
+            IsShowDeleteSelectedBtn();
+        });
     }
+
     //select all checkbox
     document.querySelector('#select-all input[type=checkbox]')
         .addEventListener('change', function(e) {
             var isAllChecked = this.checked;
-            var surveryCheckBoxes = document.querySelectorAll('#survery-table [data-type=self-checkbox]');
+            var surveryCheckBoxes = document.querySelectorAll('#survery-table [data-type=input-checkbox]');
             surveryCheckBoxes.forEach(function(selfCheckbox) {
                 var isChecked = selfCheckbox.querySelector('input[type=checkbox]').checked;
                 if (isChecked !== isAllChecked) {
                     selfCheckbox.click();
                 }
             });
-            IsShowDeleteSelectedBtn();
         });
 
     // when cancel checkbox sync all checkbox and deleteSelectedBtn
@@ -94,13 +97,12 @@
             selectAllBox.classList.remove('checked');
             selectAllInput.checked = false;
         }
-        IsShowDeleteSelectedBtn();
     });
 
     //delete selected surveries
     document.querySelector('#delete-selected-btn')
         .addEventListener('click', function(e) {
-            var selectedSurveryInput = document.querySelectorAll('#survery-table [data-type=self-checkbox] input[type=checkbox]:checked');
+            var selectedSurveryInput = document.querySelectorAll('#survery-table [data-type=input-checkbox] input[type=checkbox]:checked');
             var selectedSurveryIds = [].map.call(selectedSurveryInput, function(input) {
                 return input.parentNode.parentNode.parentNode.getAttribute('id');
             });
@@ -116,7 +118,7 @@
 
     //judge is show delete-select-btn
     function IsShowDeleteSelectedBtn() {
-        var surveryCheckBoxes = document.querySelectorAll('[data-type=self-checkbox] input[type=checkbox]');
+        var surveryCheckBoxes = document.querySelectorAll('[data-type=input-checkbox] input[type=checkbox]');
         var deleteSelectedBtn = document.querySelector('#delete-selected-btn');
         setTimeout(function() {
             if ([].some.call(surveryCheckBoxes, function(checkbox) {

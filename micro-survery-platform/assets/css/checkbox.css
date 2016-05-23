@@ -1,9 +1,9 @@
-.check-box {
+[data-type^=input] {
     cursor: pointer;
     display: inline-block;
 }
 
-.check-box input[type=checkbox] {
+[data-type^=input] input[type=checkbox] ,[data-type^=input] input[type=radio] {
     height: 0;
     width: 0;
     margin: 0;
@@ -14,19 +14,17 @@
     margin-right: -18px;
     display: none;
 }
-.check-box input[type=checkbox]:checked ~ .check-frame .checked-box{
-  opacity:1;
-}
-.check-box .check-frame {
+
+[data-type^=input] .input-frame {
     width: 16px;
     height: 16px;
     display: inline-block;
     position: relative;
-    top: 2px;
     overflow: hidden;
+    top: 2px;
 }
 
-.check-box .check-frame .normal-box {
+[data-type^=input] .input-frame .normal-box {
     position: absolute;
     left: 0;
     top: 0;
@@ -38,15 +36,20 @@
     box-sizing: border-box;
 }
 
-.check-box.checked .checked-box {
+[data-type=input-radio] .input-frame .normal-box {
+    border-radius: 50%;
+}
+
+
+[data-type^=input] input:checked ~ .input-frame .checked-box {
     opacity: 1;
 }
 
-.check-box .check-frame .checked-box {
+[data-type^=input] .input-frame .checked-box {
     position: absolute;
     left: 0;
     top: 0;
-    display: inline-block;
+    display: block;
     opacity: 0;
     width: inherit;
     height: inherit;
@@ -56,18 +59,18 @@
     transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
 }
 
-.check-box.checked .checked-box {
-    opacity: 1;
+[data-type=input-radio] .input-frame .checked-box {
+    background: #ED7419;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    left: 3px;
+    top: 3px;
 }
 
-.check-box .checkbox-label {
+[data-type^=input] .label {
     font-size: 16px;
-    padding-left: 4px;
-}
-
-.radio-box {
-    cursor: pointer;
-    display: inline-block;
+    padding-left: 7px;
 }
 
 .radio-box .radio-frame {
@@ -89,6 +92,19 @@
     left: 0;
     display: inline-block;
     border-radius: 50%;
+}
+
+.radio-box .radio-frame .checked-radio {
+    display: block;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    opacity: 0;
+    height: 12px;
+    background:
+}
+
+.check-box input:checked ~ .check-frame .checked-radio {
+    opacity: 1;
 }
 
 .radio-box .radio-label {

@@ -65,9 +65,29 @@
 
     function renderSingleSelection(index) {
         var liNode = document.createElement('li');
-        var selectionContent = '<div class="radio-box">' +
-            '        <span class="radio-frame">' +
-            '           <span class="normal-radio"></span>' +
+        var selectionContent = '<div data-type="input-radio">' +
+            '        <span class="input-frame">' +
+            '           <span class="normal-box"></span>' +
+            '        </span>' +
+            '        <input type="text" class="line-input" value="选项' + (index + 1) + '">' +
+            '    </div>' +
+            '<div class="operates">' +
+            '    <i class="icon-up"></i>' +
+            '    <i class="icon-down"></i>' +
+            '    <i class="icon-delete"></i>' +
+            '</div>';
+
+        liNode.innerHTML = selectionContent;
+        liNode.setAttribute('data-index', index);
+        bindSelectionEvent(liNode);
+        return liNode;
+    };
+
+    function renderMultipleSelection(index) {
+        var liNode = document.createElement('li');
+        var selectionContent = '<div data-type="input-checkbox">' +
+            '        <span class="input-frame">' +
+            '           <span class="normal-box"></span>' +
             '        </span>' +
             '        <input type="text" class="line-input" value="选项' + (index + 1) + '">' +
             '    </div>' +
@@ -114,25 +134,6 @@
         });
     }
 
-    function renderMultipleSelection(index) {
-        var liNode = document.createElement('li');
-        var selectionContent = '<div class="check-box">' +
-            '        <span class="check-frame">' +
-            '           <span class="normal-box"></span>' +
-            '        </span>' +
-            '        <input type="text" class="line-input" value="选项' + (index + 1) + '">' +
-            '    </div>' +
-            '<div class="operates">' +
-            '    <i class="icon-up"></i>' +
-            '    <i class="icon-down"></i>' +
-            '    <i class="icon-delete"></i>' +
-            '</div>';
-
-        liNode.innerHTML = selectionContent;
-        liNode.setAttribute('data-index', index);
-        bindSelectionEvent(liNode);
-        return liNode;
-    };
     window.newQuestionBox = {
         show: function(type) {
             var newQuestionBox = document.querySelector('#new-question-box');
@@ -169,10 +170,7 @@
         window.location.href = "./404.html";
         return;
     }
-    if (survery.state !== 0) {
-        window.location.href = "./404.html";
-        return;
-    }
+
     var questions = survery.questions || [];
     // init page
     initSurvery(survery);
@@ -275,11 +273,11 @@
 
     function renderSingleSelection(selection) {
         var liNode = document.createElement('li');
-        var selectionContent = '<div class="radio-box">' +
-            '    <span class="radio-frame">' +
-            '        <span class="normal-radio"></span>' +
+        var selectionContent = '<div data-type="input-radio">' +
+            '    <span class="input-frame">' +
+            '        <span class="normal-box"></span>' +
             '    </span>' +
-            '    <span class="radio-label">' + selection + '</span>' +
+            '    <span class="label">' + selection + '</span>' +
             '</div>';
         liNode.innerHTML = selectionContent;
         return liNode;
@@ -287,11 +285,11 @@
 
     function renderMultipleSelection(selection) {
         var liNode = document.createElement('li');
-        var selectionContent = '<div class="check-box">' +
-            '    <span class="check-frame">' +
+        var selectionContent = '<div data-type="input-checkbox">' +
+            '    <span class="input-frame">' +
             '        <span class="normal-box"></span>' +
             '    </span>' +
-            '    <span class="radio-label">' + selection + '</span>' +
+            '    <span class="label">' + selection + '</span>' +
             '</div>';
         liNode.innerHTML = selectionContent;
         return liNode;
