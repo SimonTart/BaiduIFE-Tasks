@@ -171,16 +171,12 @@
     }
     var questions = survery.questions || [];
     // init page
-
+    initSurvery(survery);
 
     //title block
     var titleNode = document.querySelector('#title');
     var surveryTitleNode = document.querySelector('#survery-title');
     var surveryTitleInputNode = document.querySelector('#survery-title-input');
-
-    //init title
-    surveryTitleNode.textContent = survery.title;
-    surveryTitleInputNode.value = survery.title;
 
     surveryTitleNode.addEventListener('click', function() {
         titleNode.classList.add('edit');
@@ -219,9 +215,14 @@
         });
     });
 
+
+    //save survery
+    document.querySelector('#save-survery').addEventListener('click', function() {
+        Survery.set(survery.id, 'questions', questions);
+    });
     //after new question
     newQuestionBox.afterNew(function(newQuestion) {
-    	var questionListNode = document.querySelector('#question-list');
+        var questionListNode = document.querySelector('#question-list');
 
         questionListNode.appendChild(renderQuestion(newQuestion, questions.length));
         questions.push(newQuestion);
@@ -234,7 +235,7 @@
             '        <span class="q-number">' + (index + 1) + '. </span><span>' + question.title + '</span>' +
             '    </div>' +
             '    <div class="tool-bar">' +
-            '        <span>上移</span><span>下移</span><span>复用</span><span>删除</span>' +
+            '        <span class="move-up">上移</span><span class="move-down">下移</span><!--<span>复用</span>--><span class="delete">删除</span>' +
             '    </div>';
 
         questionNode.innerHTML = questionContent;
@@ -253,8 +254,12 @@
         }
         var toolBarNode = questionNode.querySelector('.tool-bar');
         questionNode.insertBefore(selectionListNode, toolBarNode);
+
+        //add eventlistener
+        bindQuestionEvent(questionNode);
+
         return questionNode;
-    };
+    }
 
     function renderSingleSelection(selection) {
         var liNode = document.createElement('li');
@@ -280,6 +285,98 @@
         return liNode;
     }
 
+    function initSurvery(survery) {
+        var surveryTitleNode = document.querySelector('#survery-title');
+        var surveryTitleInputNode = document.querySelector('#survery-title-input');
 
+        //init title
+        surveryTitleNode.textContent = survery.title;
+        surveryTitleInputNode.value = survery.title;
 
+        var questionsFragment = document.createDocumentFragment();
+        var questions = survery.questions || [];
+
+        questions.forEach(function(question, index) {
+            questionsFragment.appendChild(renderQuestion(question, index));
+        });
+        document.querySelector('#question-list').appendChild(questionsFragment);
+    }
+
+    function bindQuestionEvent(questionNode) {
+        questionNode.querySelector('.move-up').addEventListener('click', function() {
+            var questionListNode = document.querySelector('#question-list');
+            var questionNodes = questionListNode.querySelectorAll('div.question-item');
+            var thisQuestionNode = this.parentNode.parentNode;
+            var index = [].indexOf.call(questionNodes, thisQuestionNode);
+            if (index <= 0) {
+                return;
+            }
+            // var smallQuestionNode = renderQuestion(questions[index], index - 1);
+            // var largeQuestionNode = renderQuestion(questions[index - 1], index);
+            // questionListNode.insertBefore(smallQuestionNode, questionNodes[index - 1]);
+            // questionListNode.removeChild(questionNodes[index - 1]);
+            // questionListNode.insertBefore(largeQuestionNode, questionNodes[index]);
+            // questionListNode.removeChild(questionNodes[index]);
+
+            questionNodes[index].querySelector('.q-number').textContent = index;
+            questionNodes[index - 1].querySelector('.q-number').textContent = index + 1;
+            questionListNode.insertBefore(questionNodes[index], questionNodes[index - 1]);
+
+            var tempQuestion = questions[index];
+            questions[index] = questions[index - 1];
+            questions[index - 1] = tempQuestion;
+        });
+        questionNode.querySelector('.move-down').addEventListener('click', function() {
+            var questionListNode = document.querySelector('#question-list');
+            var questionNodes = questionListNode.querySelectorAll('div.question-item');
+            var thisQuestionNode = this.parentNode.parentNode;
+            var index = [].indexOf.call(questionNodes, thisQuestionNode);
+            if (index >= questionNodes.length - 1) {
+                return;
+            }
+            // var smallQuestionNode = renderQuestion(questions[index + 1], index);
+            // var largeQuestionNode = renderQuestion(questions[index], index + 1);
+
+            // questionListNode.insertBefore(smallQuestionNode, questionNodes[index]);
+            // questionListNode.removeChild(questionNodes[index]);
+            // questionListNode.insertBefore(largeQuestionNode, questionNodes[index + 1]);
+            // questionListNode.removeChild(questionNodes[index + 1]);
+            questionNodes[index].querySelector('.q-number').textContent = index + 2;
+            questionNodes[index + 1].querySelector('.q-number').textContent = index + 1;
+            questionListNode.insertBefore(questionNodes[index], questionNodes[index + 1].nextSibling);
+
+            var tempQuestion = questions[index];
+            questions[index] = questions[index + 1];
+            questions[index + 1] = tempQuestion;
+        });
+        questionNode.querySelector('.move-down').addEventListener('click', function() {
+            var questionListNode = document.querySelector('#question-list');
+            var questionNodes = questionListNode.querySelectorAll('div.question-item');
+            var thisQuestionNode = this.parentNode.parentNode;
+            var index = [].indexOf.call(questionNodes, thisQuestionNode);
+            if (index >= questionNodes.length - 1) {
+                return;
+            }
+            // var smallQuestionNode = renderQuestion(questions[index + 1], index);
+            // var largeQuestionNode = renderQuestion(questions[index], index + 1);
+
+            // questionListNode.insertBefore(smallQuestionNode, questionNodes[index]);
+            // questionListNode.removeChild(questionNodes[index]);
+            // questionListNode.insertBefore(largeQuestionNode, questionNodes[index + 1]);
+            // questionListNode.removeChild(questionNodes[index + 1]);
+
+            var tempQuestion = questions[index];
+            questions[index] = questions[index + 1];
+            questions[index + 1] = tempQuestion;
+        });
+
+        questionNode.querySelector('.delete').addEventListener('click', function() {
+            var questionListNode = document.querySelector('#question-list');
+            var questionNodes = questionListNode.querySelectorAll('div.question-item');
+            var thisQuestionNode = this.parentNode.parentNode;
+            var index = [].indexOf.call(questionNodes, thisQuestionNode);
+
+        });
+
+    }
 })(document, Survery, TipBox, newQuestionBox);
