@@ -21,20 +21,13 @@
     // init page
     initSurvery(survery);
 
-    //title block
-    var titleNode = document.querySelector('#title');
-    var surveryTitleNode = document.querySelector('#survery-title');
-    var surveryTitleInputNode = document.querySelector('#survery-title-input');
-
-    surveryTitleNode.addEventListener('click', function() {
-        titleNode.classList.add('edit');
-        surveryTitleInputNode.focus();
-    });
 
 
     function renderQuestion(question, index) {
         var questionNode = document.createElement('div');
+        var questionIndex = index;
         questionNode.className = 'question-item';
+        questionNode.setAttribute('data-type', question.type);
         var questionContent = '<div class="q-title">' +
             '        <span class="q-number">' + (index + 1) + '. </span><span>' + question.title + '</span>' +
             '    </div>';
@@ -50,7 +43,7 @@
             selectionListNode.className = 'answer-list';
             var renderSelection = question.type === 'single' ? renderSingleSelection : renderMultipleSelection;
             question.selections.forEach(function(selection) {
-                selectionListNode.appendChild(renderSelection(selection));
+                selectionListNode.appendChild(renderSelection(selection, questionIndex));
             });
         }
         var toolBarNode = questionNode.querySelector('.tool-bar');
@@ -59,26 +52,30 @@
         return questionNode;
     }
 
-    function renderSingleSelection(selection) {
+    function renderSingleSelection(selection, index) {
         var liNode = document.createElement('li');
-        var selectionContent = '<div class="radio-box">' +
-            '    <span class="radio-frame">' +
-            '        <span class="normal-radio"></span>' +
+        var selectionContent = '<label data-type="input-radio">' +
+            '    <input type="radio" name="question' + index + '"/>' +
+            '    <span class="input-frame">' +
+            '        <span class="normal-box"></span>' +
+            '        <span class="checked-box"></span>' +
             '    </span>' +
-            '    <span class="radio-label">' + selection + '</span>' +
-            '</div>';
+            '    <span class="label">' + selection + '</span>' +
+            '</label>';
         liNode.innerHTML = selectionContent;
         return liNode;
     }
 
-    function renderMultipleSelection(selection) {
+    function renderMultipleSelection(selection, index) {
         var liNode = document.createElement('li');
-        var selectionContent = '<div class="check-box">' +
-            '    <span class="check-frame">' +
+        var selectionContent = '<label data-type="input-checkbox">' +
+            '    <input type="checkbox" name="question' + index + '"/>' +
+            '    <span class="input-frame">' +
             '        <span class="normal-box"></span>' +
+            '        <span class="checked-box"></span>' +
             '    </span>' +
-            '    <span class="checkbox-label">' + selection + '</span>' +
-            '</div>';
+            '    <span class="label">' + selection + '</span>' +
+            '</label>';
         liNode.innerHTML = selectionContent;
         return liNode;
     }

@@ -60,7 +60,7 @@ body {
 }
 
 .question-item .q-number {
-    width: 40px;
+    padding-right: 12px;
     display: inline-block;
 }
 
@@ -90,7 +90,6 @@ body {
     vertical-align: top;
 }
 
-
 .question-item .textarea {
     height: 100px;
     width: 540px;
@@ -98,4 +97,21 @@ body {
     margin-left: 40px;
     margin-top: 12px;
     margin-bottom: 7px;
+}
+
+.btn-submit {
+    padding: 5px 18px;
+    background: #ed7419;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 45px;
+    margin-top: 35px;
+    margin-left: 50%;
+    position: relative;
+    left: -35px;
+}
+.btn-submit:hover{
+background: #e86400;
 }
