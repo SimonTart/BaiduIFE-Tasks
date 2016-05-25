@@ -2,8 +2,11 @@
     var newQuestionBox = document.querySelector('#new-question-box');
     var addNewSlectionNode = document.querySelector('.new-selection-btn');
     var addNewQuestionCallback = null;
+
+    //add new seletion btn
     addNewSlectionNode.addEventListener('click', function() {
-        addSelection('single');
+        var type = newQuestionBox.getAttribute('data-type');
+        addSelection(type);
     });
 
     //cancel x click
@@ -255,7 +258,7 @@
             selectionListNode = document.createElement('div');
             selectionListNode.className = 'textarea';
         } else {
-            selectionListNode = document.createElement('li');
+            selectionListNode = document.createElement('ul');
             selectionListNode.className = 'answer-list';
             var renderSelection = question.type === 'single' ? renderSingleSelection : renderMultipleSelection;
             question.selections.forEach(function(selection) {

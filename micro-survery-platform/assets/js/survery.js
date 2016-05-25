@@ -34,6 +34,75 @@
             var surveriesItem = JSON.stringify(surveries);
             window.localStorage.setItem('surveries', surveriesItem);
         },
+        getStatist: function(id) {
+            var answers = [];
+            var statists = [];
+            var surveries = this.getSurveryList();
+            surveries.some(function(survery) {
+                if (survery.id === id) {
+                    answers = survery.answers || [];
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            var totalNumber = answers.length;
+            //console.log(answers);
+            answers.forEach(function(answer) {
+                answer.forEach(function(question,index){
+                    if (!statists[index]) {
+                        statists[index] = {};
+                    }
+                    var thisStatist = statists[index];
+                    if (question.type === 'single') {
+                        if (thisStatist[question.value]) {
+                            thisStatist[question.value]++;
+                        } else {
+                            thisStatist[question.value] = 1;
+                        }
+                    } else if (question.type === 'multiple') {
+                        question.value.forEach(function(value) {
+                            if (thisStatist[value]) {
+                                thisStatist[value]++;
+                            } else {
+                                thisStatist[value] = 1;
+                            }
+                        });
+                    }else if(question.type === 'text'){
+                        if(answer.value){
+                            if(thisStatist['valid']){
+                                thisStatist['valid']++;
+                            }else{
+                                thisStatist['valid'] = 0;
+                            }
+                        }
+                    }
+                });
+            });
+
+            //transto percent
+            statists.forEach(function(statist){
+                for(var i in statist){
+                    statist[i] = statist[i] / totalNumber;
+                }
+            });
+            return {
+                totalNumber: totalNumber,
+                statists: statists
+            };
+        },
+        addAnswer: function(id, answer) {
+            var surveries = this.getSurveryList();
+            surveries.some(function(survery) {
+                if (survery.id === id) {
+                    survery.answers.push(answer);
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            this.setSurverise(surveries);
+        },
         remove: function(id) {
             var surveries = this.getSurveryList();
             surveries = surveries.filter(function(element) {

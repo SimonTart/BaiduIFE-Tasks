@@ -21,15 +21,14 @@
             '        </label>' +
             '    </td>' +
             '    <td>' +
-                (survery.state === 1 ? '<a class="title" href="survery.html?id=' + survery.id + '">' + survery.title+'</a>' : survery.title)
-                + '</td>' +
+            (survery.state === 1 ? '<a class="title" href="survery.html?id=' + survery.id + '">' + survery.title + '</a>' : survery.title) + '</td>' +
             '    <td>' + survery.createDate + '</td>' +
             '    <td>' + stateTransMap[survery.state] + '</td>' +
             '    <td>' +
             '        <a class="btn-operate btn-edit" href="' +
             (survery.state === 0 ? ('./edit.html?id=' + survery.id) : 'javascript:void(0);') + '">编辑</a>' +
             '        <div class="btn-operate" name="delete">删除</div>' +
-            '        <div class="btn-operate">查看数据</div>' +
+            '        <div class="btn-operate"><a href="surveryData.html?id=' + survery.id + '">查看数据</a></div>' +
             '    </td>';
         var trElement = document.createElement('tr');
         var stateClassMap = {
@@ -69,7 +68,7 @@
             });
         });
         //change is show delete btn
-        surveryNode.querySelector('[data-type=input-checkbox]').addEventListener('change',function () {
+        surveryNode.querySelector('[data-type=input-checkbox]').addEventListener('change', function() {
             IsShowDeleteSelectedBtn();
         });
     }

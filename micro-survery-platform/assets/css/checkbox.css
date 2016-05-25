@@ -3,7 +3,8 @@
     display: inline-block;
 }
 
-[data-type^=input] input[type=checkbox] ,[data-type^=input] input[type=radio] {
+[data-type^=input] input[type=checkbox],
+[data-type^=input] input[type=radio] {
     height: 0;
     width: 0;
     margin: 0;
@@ -40,7 +41,7 @@
     border-radius: 50%;
 }
 
-
+[data-type^=input].checked .input-frame .checked-box,
 [data-type^=input] input:checked ~ .input-frame .checked-box {
     opacity: 1;
 }
@@ -72,4 +73,3 @@
     font-size: 16px;
     padding-left: 7px;
 }
-
