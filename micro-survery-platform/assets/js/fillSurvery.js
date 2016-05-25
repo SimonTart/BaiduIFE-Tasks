@@ -91,7 +91,8 @@
 
         var selectionListNode;
         if (question.type === 'text') {
-            selectionListNode = document.createElement('div');
+            selectionListNode = document.createElement('input');
+            selectionListNode.type = 'textarea';
             selectionListNode.className = 'textarea';
         } else {
             selectionListNode = document.createElement('ul');
