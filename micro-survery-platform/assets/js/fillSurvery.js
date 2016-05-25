@@ -60,7 +60,7 @@
             } else {
                 return {
                     type: type,
-                    value: questionNode.querySelector('input[type=textarea]').value
+                    value: questionNode.querySelector('textarea').value
                 }
             }
         });
@@ -91,8 +91,7 @@
 
         var selectionListNode;
         if (question.type === 'text') {
-            selectionListNode = document.createElement('input');
-            selectionListNode.type = 'textarea';
+            selectionListNode = document.createElement('textarea');
             selectionListNode.className = 'textarea';
         } else {
             selectionListNode = document.createElement('ul');

@@ -19,7 +19,7 @@
     var totalNumber = statists.totalNumber;
     var questionFrament = document.createDocumentFragment();
     survery.questions.forEach(function(question, index) {
-        questionFrament.appendChild(renderQuestion(question, statists[index],index));
+        questionFrament.appendChild(renderQuestion(question, statists[index], index));
     });
     document.querySelector("#question-list").appendChild(questionFrament);
 
@@ -30,34 +30,48 @@
                 '            </li>';
         }, '');
 
-        var statistStr = question.selections.reduce(function(preStr, selection) {
-            var percent = statist[selection] || 0;
-            percent = round(percent, 4) * 100 + '%';
-            return preStr + '<li>' +
-                '	<div class="bar-wrap">' +
-                '		<div class="bar" style="width:' + percent + '"></div>' +
-                '	</div>' +
-                '	<span class="percent">' + percent + '</span>' +
-                '</li>';
-        }, '');
+        var statistStr = '';
+        if(question.type === 'text'){
+        	var percent = statist['valid'] || 0;
+	            percent = round(percent, 4) * 100 + '%';
+        	statistStr = '<li>' +
+	                '	<div class="bar-wrap">' +
+	                '		<div class="bar" style="width:' + percent + '"></div>' +
+	                '	</div>' +
+	                '	<span class="percent">' + percent + '</span>' +
+	                '</li>';
+        }else{
+	        statistStr = question.selections.reduce(function(preStr, selection, question) {
+	            var percent = statist[selection] || 0;
+	            percent = round(percent, 4) * 100 + '%';
+	            return preStr + '<li>' +
+	                '	<div class="bar-wrap">' +
+	                '		<div class="bar" style="width:' + percent + '"></div>' +
+	                '	</div>' +
+	                '	<span class="percent">' + percent + '</span>' +
+	                '</li>';
+	        }, '');
+        }
 
         var questionNode = document.createElement('div');
         questionNode.className = 'question-item';
         var contentStr = '    <div class="q-body">' +
             '        <div class="q-title">' +
-            '            <span class="q-number">'+(index+1)+'. </span>' +
-            '            <span>您的性别</span>' +
+            '            <span class="q-number">' + (index + 1) + '. </span>' +
+            '            <span>' + question.title + '</span>' +
             '        </div>' +
             '        <ul class="answer-list">' + selectionsStr + '</ul>' +
             '    </div>' +
             '    <div class="q-statist">' +
-            '        <p>数据占比</p>' +
+            '        <p>' + (question.type === 'text' ? '回答有效占比' : '有效占比') + '</p>' +
             '        <ul class="statist-list">' + statistStr + '</ul>' +
             '    </div>';
         questionNode.innerHTML = contentStr;
         return questionNode;
     }
+    function getSingleMultipleStr(){
 
+    }
     //only round decimals
     function round(number, digit) {
         number = parseFloat(number.toFixed(digit));

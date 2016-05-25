@@ -5,7 +5,7 @@ body {
 a{
     text-decoration: none;
 }
-input{
+input,textarea{
     font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", STHeiti, sans-serif;
 }
 .tip-mask {

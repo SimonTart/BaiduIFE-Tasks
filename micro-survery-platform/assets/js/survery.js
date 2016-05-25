@@ -47,7 +47,7 @@
                 }
             });
             var totalNumber = answers.length;
-            //console.log(answers);
+            console.log(answers);
             answers.forEach(function(answer) {
                 answer.forEach(function(question,index){
                     if (!statists[index]) {
@@ -69,11 +69,11 @@
                             }
                         });
                     }else if(question.type === 'text'){
-                        if(answer.value){
+                        if(question.value){
                             if(thisStatist['valid']){
                                 thisStatist['valid']++;
                             }else{
-                                thisStatist['valid'] = 0;
+                                thisStatist['valid'] = 1;
                             }
                         }
                     }

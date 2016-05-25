@@ -128,3 +128,15 @@ body {
     margin-right: -75px;
     margin-left: 10px;
 }
+.btn-back {
+    padding: 5px 18px;
+    background: #ed7419;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 45px;
+    margin-left: 50%;
+    position: relative;
+    left: -35px;
+}

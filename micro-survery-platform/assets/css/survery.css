@@ -93,10 +93,20 @@ body {
 .question-item .textarea {
     height: 100px;
     width: 540px;
-    border: 1px solid #cacaca;
     margin-left: 40px;
     margin-top: 12px;
     margin-bottom: 7px;
+    border: 1px solid #cacaca;
+    outline: none;
+    font-size: 16px;
+    resize: none;
+    padding: 7px 17px;
+    line-height: 1.7;
+    word-break: break-all;
+}
+
+.question-item .textarea:focus {
+    border-color: #0095dd;
 }
 
 .btn-submit {
@@ -117,6 +127,7 @@ body {
     background: #e86400;
 }
 
-.btn-disable,.btn-disable:hover {
+.btn-disable,
+.btn-disable:hover {
     background: #b3aeae;
 }
