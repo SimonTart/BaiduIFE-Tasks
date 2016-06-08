@@ -1,0 +1,27 @@
+.container{
+	width: 275px;
+	margin: 200px auto;
+	height: 275px;
+}
+[data-type=calendar] .self-calendar{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	font-size: 14px;
+}
+[data-type=calendar] .self-calendar:before{
+	content: '';
+	border-width: 6px;
+	border-style: solid;
+	border-color: transparent transparent #e77409 transparent;
+	border-top: none;
+	position: absolute;
+	left: 50%;
+	top: -6px;
+	margin-left: -6px;
+}
+[data-type=calendar] .calendar-header{
+	height: 55px;
+	background: #e77409;
+	padding-top: 5px;
+}
